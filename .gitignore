@@ -1,0 +1,5 @@
+# Project exclude paths
+/herring-services/herring-member/herring-member-service/target/
+/herring-services/herring-orders/herring-orders-service/target/
+/herring-services/herring-product/herring-product-service/target/
+/.idea/
