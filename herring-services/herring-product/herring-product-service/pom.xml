@@ -24,6 +24,11 @@
         </dependency>
         <dependency>
             <groupId>org.jackey</groupId>
+            <artifactId>herring-sentinel</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jackey</groupId>
             <artifactId>herring-product-model</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
