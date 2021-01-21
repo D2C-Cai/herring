@@ -11,5 +11,17 @@
 
     <artifactId>herring-skywalking</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.skywalking</groupId>
+            <artifactId>apm-toolkit-logback-1.x</artifactId>
+            <version>8.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.skywalking</groupId>
+            <artifactId>apm-toolkit-trace</artifactId>
+            <version>8.0.1</version>
+        </dependency>
+    </dependencies>
 
 </project>

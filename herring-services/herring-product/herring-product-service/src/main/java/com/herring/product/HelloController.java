@@ -26,11 +26,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     @Autowired
-    private HelloService helloService;
+    private ProductService productService;
 
     @RequestMapping("/hello")
     public String hello() {
-        return helloService.sayHello();
+        return productService.sayHello();
     }
 
 }
