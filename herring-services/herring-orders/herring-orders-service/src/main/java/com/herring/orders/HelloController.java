@@ -15,6 +15,7 @@ accordance with the terms of the license agreement you entered into with HUPUN.
 Website：http://www.hupun.com
 */
 
+import org.apache.skywalking.apm.toolkit.trace.Trace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +29,7 @@ public class HelloController {
     @Autowired
     private OrderService orderService;
 
+    @Trace(operationName = "order.hello()")
     @RequestMapping("/hello")
     public String hello() {
         return orderService.sayHello();
