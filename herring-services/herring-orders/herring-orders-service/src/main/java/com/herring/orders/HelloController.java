@@ -15,24 +15,39 @@ accordance with the terms of the license agreement you entered into with HUPUN.
 Website：http://www.hupun.com
 */
 
+import com.herring.member.MemberClient;
+import com.herring.product.ProductClient;
 import org.apache.skywalking.apm.toolkit.trace.Trace;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * @author: Jackey 2020/12/22
  */
 @RestController
+@RequestMapping("/orders")
 public class HelloController {
 
-    @Autowired
-    private OrderService orderService;
+    @Resource
+    private OrdersService ordersService;
+    @Resource
+    private ProductClient productClient;
+    @Resource
+    private MemberClient memberClient;
 
-    @Trace(operationName = "order.hello()")
+    @Trace(operationName = "orders.hello()")
     @RequestMapping("/hello")
     public String hello() {
-        return orderService.sayHello();
+        String product = productClient.service();
+        String member = memberClient.service();
+        return ordersService.sayHello() + product + member;
+    }
+
+    @RequestMapping("/service")
+    public String service() {
+        return ordersService.sayHello();
     }
 
 }

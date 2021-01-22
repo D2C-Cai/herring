@@ -16,7 +16,11 @@ Website：http://www.hupun.com
 */
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.herring.member.MemberClient;
+import com.herring.orders.OrdersClient;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * @author: Jackey 2020/12/22
@@ -26,11 +30,11 @@ public class ProductService {
 
     @SentinelResource(value = "sayHello", fallback = "sayHelloFail")
     public String sayHello() {
-        return "Hello, World!";
+        return "Hello, Product! ";
     }
 
     public String sayHelloFail() {
-        return "I am sorry!";
+        return "I am sorry, Product! ";
     }
 
 }

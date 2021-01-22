@@ -22,15 +22,15 @@ import org.springframework.stereotype.Service;
  * @author: Jackey 2020/12/22
  */
 @Service
-public class OrderService {
+public class OrdersService {
 
     @SentinelResource(value = "sayHello", fallback = "sayHelloFail")
     public String sayHello() {
-        return "Hello, World!";
+        return "Hello, Orders! ";
     }
 
     public String sayHelloFail() {
-        return "I am sorry!";
+        return "I am sorry, Orders! ";
     }
 
 }

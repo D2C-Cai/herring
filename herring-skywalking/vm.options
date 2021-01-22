@@ -1,1 +1,1 @@
--javaagent:${path}\herring\herring-skywalking\agent\skywalking-agent.jar -Dskywalking.agent.service_name=${service-name} -Dskywalking.agent.instance_name=${instance-name} -Dskywalking.collector.backend_service=192.168.138.130:9022
+-javaagent:${path}\herring\herring-skywalking\agent\skywalking-agent.jar -Dskywalking.agent.service_name=${service-name} -Dskywalking.agent.instance_name=${instance-name} -Dskywalking.collector.backend_service=192.168.138.131:9022

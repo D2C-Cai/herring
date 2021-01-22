@@ -26,11 +26,11 @@ public class MemberService {
 
     @SentinelResource(value = "sayHello", fallback = "sayHelloFail")
     public String sayHello() {
-        return "Hello, World!";
+        return "Hello, Member! ";
     }
 
     public String sayHelloFail() {
-        return "I am sorry!";
+        return "I am sorry, Member! ";
     }
 
 }

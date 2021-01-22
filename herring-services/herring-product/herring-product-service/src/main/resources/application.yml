@@ -8,13 +8,13 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.138.130:8848
+        server-addr: 192.168.138.131:8848
 
     sentinel:
       eager: true
       transport:
         port: 8719
-        dashboard: 192.168.138.130:8858
+        dashboard: 192.168.138.131:8858
 
 feign:
   sentinel:
