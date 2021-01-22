@@ -36,6 +36,8 @@ public class HelloController {
     private ProductClient productClient;
     @Resource
     private OrdersClient ordersClient;
+    @Resource
+    private MessageProducer messageProducer;
 
     @Trace(operationName = "member.hello()")
     @RequestMapping("/hello")
@@ -48,6 +50,11 @@ public class HelloController {
     @RequestMapping("/service")
     public String service() {
         return memberService.sayHello();
+    }
+
+    @RequestMapping("/message")
+    public void message() throws Exception {
+        messageProducer.run("");
     }
 
 }
