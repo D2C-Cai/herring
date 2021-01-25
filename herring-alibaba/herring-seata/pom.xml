@@ -11,5 +11,12 @@
 
     <artifactId>herring-seata</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>io.seata</groupId>
+            <artifactId>seata-spring-boot-starter</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+    </dependencies>
 
 </project>
