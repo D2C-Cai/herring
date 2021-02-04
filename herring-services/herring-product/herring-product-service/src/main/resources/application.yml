@@ -45,19 +45,17 @@ seata:
     nacos:
       application: seata-server
       server-addr: 192.168.138.131:8848
-      group : "SEATA_GROUP"
-      namespace: ""
-      username: "nacos"
-      password: "nacos"
+      group: SEATA_GROUP
+      username: nacos
+      password: nacos
 
   config:
     type: nacos
     nacos:
       server-addr: 192.168.138.131:8848
-      group: "SEATA_GROUP"
-      namespace: ""
-      username: "nacos"
-      password: "nacos"
+      group: SEATA_GROUP
+      username: nacos
+      password: nacos
 
 # 1.redis-token
 
