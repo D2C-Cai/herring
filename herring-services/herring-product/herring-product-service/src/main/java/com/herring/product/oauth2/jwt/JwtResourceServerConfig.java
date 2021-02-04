@@ -54,6 +54,7 @@ public class JwtResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
         resources.tokenStore(jwtTokenStore);
+        resources.resourceId("product-service");
     }
 
 }

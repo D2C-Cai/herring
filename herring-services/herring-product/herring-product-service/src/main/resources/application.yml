@@ -71,9 +71,6 @@ seata:
 #      client-secret: client-secret-8888
 #      user-authorization-uri: http://localhost:10800/oauth/authorize
 #      access-token-uri: http://localhost:10800/oauth/token
-#    resource:
-#      id: product-service
-#      user-info-uri: user-info
 #    authorization:
 #      check-token-access: http://localhost:10800/oauth/check_token
 
@@ -87,7 +84,6 @@ security:
       user-authorization-uri: http://localhost:10800/oauth/authorize
       access-token-uri: http://localhost:10800/oauth/token
     resource:
-      id: product-service
       jwt:
         key-uri: http://localhost:10800/oauth/token_key
         key-value: sign-8888
