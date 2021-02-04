@@ -33,7 +33,7 @@ public class MessageProducer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        rocketMQTemplate.send("test-topic-1", MessageBuilder.withPayload("Hello, World! I'm from spring message").build());
+        rocketMQTemplate.send("test-topic-2", MessageBuilder.withPayload("Hello, World! I'm from spring message").build());
     }
 
 }

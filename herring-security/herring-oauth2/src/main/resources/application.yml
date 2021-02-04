@@ -1,0 +1,40 @@
+server:
+  port: 10800
+
+spring:
+  application:
+    name: oauth2-service
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.138.131:8848
+
+    sentinel:
+      eager: true
+      transport:
+        port: 8719
+        dashboard: 192.168.138.131:8858
+
+  redis:
+    database: 0
+    port: 6379
+    host: 192.168.138.131
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 2
+        max-wait: 1ms
+      shutdown-timeout: 100ms
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.138.131:3306/herring_oauth2?characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 88021120
+    hikari:
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      maximum-pool-size: 9

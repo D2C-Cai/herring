@@ -1,7 +1,7 @@
-package com.herring.orders;
+package com.herring;
 
 /*
-@(#)herring   2021-01-22
+@(#)herring   2021-02-03
  
 Copyright (c) 2011-2021 杭州湖畔网络技术有限公司 
 保留所有权利 
@@ -15,22 +15,19 @@ accordance with the terms of the license agreement you entered into with HUPUN.
 Website：http://www.hupun.com
 */
 
-import lombok.extern.slf4j.Slf4j;
-import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
-import org.apache.rocketmq.spring.core.RocketMQListener;
-import org.springframework.stereotype.Service;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
- * @author: Jackey 2021/1/22
+ * @author: Jackey 2021/2/3
  */
-@Slf4j
-@Service
-@RocketMQMessageListener(topic = "test-topic-2", consumerGroup = "my-consumer_test-topic-2")
-public class MessageListener implements RocketMQListener<String> {
+@EnableDiscoveryClient
+@SpringBootApplication
+public class Oauth2ServiceApplication {
 
-    @Override
-    public void onMessage(String message) {
-        log.info("received message: {}", message);
+    public static void main(String[] args) {
+        SpringApplication.run(Oauth2ServiceApplication.class, args);
     }
 
 }

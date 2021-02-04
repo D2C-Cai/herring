@@ -10,9 +10,10 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>herring-alibaba</module>
-        <module>herring-skywalking</module>
-        <module>herring-services</module>
         <module>herring-common</module>
+        <module>herring-security</module>
+        <module>herring-services</module>
+        <module>herring-skywalking</module>
     </modules>
 
     <properties>

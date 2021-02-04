@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: oauth2-service
+
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.138.131:8848
+        file-extension: properties

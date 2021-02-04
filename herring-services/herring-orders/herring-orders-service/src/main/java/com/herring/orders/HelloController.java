@@ -17,11 +17,18 @@ Website：http://www.hupun.com
 
 import com.herring.member.MemberClient;
 import com.herring.product.ProductClient;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 import org.apache.skywalking.apm.toolkit.trace.Trace;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author: Jackey 2020/12/22
@@ -36,6 +43,8 @@ public class HelloController {
     private ProductClient productClient;
     @Resource
     private MemberClient memberClient;
+    @Resource
+    private MessageProducer messageProducer;
 
     @Trace(operationName = "orders.hello()")
     @RequestMapping("/hello")
@@ -48,6 +57,33 @@ public class HelloController {
     @RequestMapping("/service")
     public String service() {
         return ordersService.sayHello();
+    }
+
+    @RequestMapping("/message")
+    public void message() throws Exception {
+        messageProducer.run("");
+    }
+
+    @GetMapping(value = "/info")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    public Object info(Authentication authentication) {
+        // Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        authentication.getCredentials();
+        OAuth2AuthenticationDetails details = (OAuth2AuthenticationDetails) authentication.getDetails();
+        return details.getTokenValue();
+    }
+
+    @GetMapping(value = "/info/jwt")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    public Object jwtParser(Authentication authentication) {
+        authentication.getCredentials();
+        OAuth2AuthenticationDetails details = (OAuth2AuthenticationDetails) authentication.getDetails();
+        String jwtToken = details.getTokenValue();
+        Claims claims = Jwts.parser()
+                .setSigningKey("sign-8888".getBytes(StandardCharsets.UTF_8))
+                .parseClaimsJws(jwtToken)
+                .getBody();
+        return claims;
     }
 
 }

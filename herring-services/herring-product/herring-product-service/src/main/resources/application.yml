@@ -5,6 +5,18 @@ spring:
   application:
     name: product-service
 
+  redis:
+    database: 0
+    port: 6379
+    host: 192.168.138.131
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 2
+        max-wait: 1ms
+      shutdown-timeout: 100ms
+
   cloud:
     nacos:
       discovery:
@@ -24,3 +36,52 @@ rocketmq:
   name-server: 192.168.138.131:9876
   producer:
     group: product-group
+
+seata:
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: 192.168.138.131:8848
+      group : "SEATA_GROUP"
+      namespace: ""
+      username: "nacos"
+      password: "nacos"
+
+  config:
+    type: nacos
+    nacos:
+      server-addr: 192.168.138.131:8848
+      group: "SEATA_GROUP"
+      namespace: ""
+      username: "nacos"
+      password: "nacos"
+
+# 1.redis-token
+
+#security:
+#  oauth2:
+#    client:
+#      client-id: product-service
+#      client-secret: product-secret-8888
+#      user-authorization-uri: http://localhost:10800/oauth/authorize
+#      access-token-uri: http://localhost:10800/oauth/token
+#    resource:
+#      id: product-service
+#      user-info-uri: user-info
+#    authorization:
+#      check-token-access: http://localhost:10800/oauth/check_token
+
+# 2.jwt-token
+
+security:
+  oauth2:
+    client:
+      client-id: product-service
+      client-secret: product-secret-8888
+      user-authorization-uri: http://localhost:10800/oauth/authorize
+      access-token-uri: http://localhost:10800/oauth/token
+    resource:
+      jwt:
+        key-uri: http://localhost:10800/oauth/token_key
+        key-value: sign-8888

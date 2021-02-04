@@ -1,0 +1,94 @@
+# 1.redis-token
+
+#### /oauth/token?grant_type=password
+POST http://localhost:10800/oauth/token?grant_type=password&username=admin&password=123456&client_id=member-service&client_secret=member-secret-8888&scope=all
+Accept: */*
+Cache-Control: no-cache
+
+#{
+#  "access_token": "c794a4e9-b652-4f13-b409-1c72ffe8a1b2",
+#  "token_type": "bearer",
+#  "refresh_token": "0600ac08-b3ca-42e8-89d6-a2355af8c252",
+#  "expires_in": 3599,
+#  "scope": "all"
+#}
+
+#### /oauth/token?grant_type=refresh_token
+POST http://localhost:10800/oauth/token?grant_type=refresh_token&refresh_token=0600ac08-b3ca-42e8-89d6-a2355af8c252&client_id=member-service&client_secret=member-secret-8888
+Accept: */*
+Cache-Control: no-cache
+
+#{
+#  "access_token": "790db92e-db75-4c77-add4-bac0f1f0f1b7",
+#  "token_type": "bearer",
+#  "refresh_token": "0600ac08-b3ca-42e8-89d6-a2355af8c252",
+#  "expires_in": 3599,
+#  "scope": "all"
+#}
+
+#### /member/info
+GET http://localhost:10801/member/info
+Accept: */*
+Cache-Control: no-cache
+Authorization: bearer 790db92e-db75-4c77-add4-bac0f1f0f1b7
+
+# 790db92e-db75-4c77-add4-bac0f1f0f1b7
+
+
+# 2.jwt-token
+
+#### /oauth/token?grant_type=password
+POST http://localhost:10800/oauth/token?grant_type=password&username=admin&password=123456&client_id=member-service&client_secret=member-secret-8888&scope=all
+Accept: */*
+Cache-Control: no-cache
+
+#{
+#  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTI0MDc3MDcsInVzZXJfbmFtZSI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiI1Zjg1ZTJiYy04OGFjLTQwYjEtODZkZC01MzNjYmE0YWQxMjciLCJjbGllbnRfaWQiOiJtZW1iZXItc2VydmljZSIsInNjb3BlIjpbImFsbCJdfQ.t-5ybKYHXlVBw92idAfreIu73mvNATAIB5M03sSGZIs",
+#  "token_type": "bearer",
+#  "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJhdGkiOiI1Zjg1ZTJiYy04OGFjLTQwYjEtODZkZC01MzNjYmE0YWQxMjciLCJleHAiOjE2MTI0NDAxMDcsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwianRpIjoiYTYwY2Q0ZDktOWZhNy00ZTNkLTk2ZDItMWQ4NTViZDEwYzRiIiwiY2xpZW50X2lkIjoibWVtYmVyLXNlcnZpY2UifQ.CjyTZK5g4-D9p-usUNB4HrRRIR2FLc74JI4pkzOIDx8",
+#  "expires_in": 3599,
+#  "scope": "all",
+#  "jti": "5f85e2bc-88ac-40b1-86dd-533cba4ad127"
+#}
+
+#### /oauth/token?grant_type=refresh_token
+POST http://localhost:10800/oauth/token?grant_type=refresh_token&refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJhdGkiOiI1Zjg1ZTJiYy04OGFjLTQwYjEtODZkZC01MzNjYmE0YWQxMjciLCJleHAiOjE2MTI0NDAxMDcsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwianRpIjoiYTYwY2Q0ZDktOWZhNy00ZTNkLTk2ZDItMWQ4NTViZDEwYzRiIiwiY2xpZW50X2lkIjoibWVtYmVyLXNlcnZpY2UifQ.CjyTZK5g4-D9p-usUNB4HrRRIR2FLc74JI4pkzOIDx8&client_id=member-service&client_secret=member-secret-8888
+Accept: */*
+Cache-Control: no-cache
+
+#{
+#  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTI0MDc4NjIsInVzZXJfbmFtZSI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiIwYzYxNWY1MS0yN2M1LTQ1MWUtOGIwYS01ODYxY2ZmODdiYWMiLCJjbGllbnRfaWQiOiJtZW1iZXItc2VydmljZSIsInNjb3BlIjpbImFsbCJdfQ.ikbbD9smKIKutQLW7AvO8QSZhOyUo9YmUll4FQafbRU",
+#  "token_type": "bearer",
+#  "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJhdGkiOiIwYzYxNWY1MS0yN2M1LTQ1MWUtOGIwYS01ODYxY2ZmODdiYWMiLCJleHAiOjE2MTI0NDAxMDcsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwianRpIjoiYTYwY2Q0ZDktOWZhNy00ZTNkLTk2ZDItMWQ4NTViZDEwYzRiIiwiY2xpZW50X2lkIjoibWVtYmVyLXNlcnZpY2UifQ.kD5JjPideSw76ho5_tAIcN9Da6_4yDvFlBGWjvhTyuk",
+#  "expires_in": 3599,
+#  "scope": "all",
+#  "jti": "0c615f51-27c5-451e-8b0a-5861cff87bac"
+#}
+
+#### /member/info
+GET http://localhost:10801/member/info
+Accept: */*
+Cache-Control: no-cache
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTI0MDc4NjIsInVzZXJfbmFtZSI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiIwYzYxNWY1MS0yN2M1LTQ1MWUtOGIwYS01ODYxY2ZmODdiYWMiLCJjbGllbnRfaWQiOiJtZW1iZXItc2VydmljZSIsInNjb3BlIjpbImFsbCJdfQ.ikbbD9smKIKutQLW7AvO8QSZhOyUo9YmUll4FQafbRU
+
+#eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTI0MDc4NjIsInVzZXJfbmFtZSI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiIwYzYxNWY1MS0yN2M1LTQ1MWUtOGIwYS01ODYxY2ZmODdiYWMiLCJjbGllbnRfaWQiOiJtZW1iZXItc2VydmljZSIsInNjb3BlIjpbImFsbCJdfQ.ikbbD9smKIKutQLW7AvO8QSZhOyUo9YmUll4FQafbRU
+
+#### /member/info/jwt
+GET http://localhost:10801/member/info/jwt
+Accept: */*
+Cache-Control: no-cache
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsImp3dC1leHQiOiJKV1Qg5omp5bGV5L-h5oGvIiwic2NvcGUiOlsiYWxsIl0sImV4cCI6MTYxMjQyMDY4MCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiI2OWEwNDM4Mi02MTQwLTQ2ZDUtYjVjMi1hNzhlYTBmZGU1ZmIiLCJjbGllbnRfaWQiOiJtZW1iZXItc2VydmljZSJ9._yeKnmNsKbsDuwJ7ccXSftWOtYwOPwEux-jaZ9_3tnU
+
+#{
+#  "user_name": "admin",
+#  "jwt-ext": "JWT 扩展信息",
+#  "scope": [
+#    "all"
+#  ],
+#  "exp": 1612420680,
+#  "authorities": [
+#    "ROLE_ADMIN"
+#  ],
+#  "jti": "69a04382-6140-46d5-b5c2-a78ea0fde5fb",
+#  "client_id": "member-service"
+#}
