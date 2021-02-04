@@ -38,6 +38,8 @@ rocketmq:
     group: orders-group
 
 seata:
+  tx-service-group: herring_group
+
   registry:
     type: nacos
     nacos:

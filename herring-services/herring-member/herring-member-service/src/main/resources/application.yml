@@ -38,6 +38,8 @@ rocketmq:
     group: member-group
 
 seata:
+  tx-service-group: herring_group
+
   registry:
     type: nacos
     nacos:
@@ -56,6 +58,7 @@ seata:
       namespace: ""
       username: "nacos"
       password: "nacos"
+
 
 # 1.redis-token
 
