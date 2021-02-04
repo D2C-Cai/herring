@@ -1,4 +1,4 @@
-// package com.herring.member.config.oauth2.redis;
+// package com.herring.member.oauth2.redis;
 //
 // /*
 // @(#)herring   2021-02-03

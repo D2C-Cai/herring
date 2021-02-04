@@ -1,4 +1,4 @@
-package com.herring.member.config.oauth2.jwt;
+package com.herring.member.oauth2.jwt;
 
 /*
 @(#)herring   2021-02-03

@@ -31,6 +31,11 @@ spring:
 feign:
   sentinel:
     enabled: true
+  client:
+    config:
+      default:
+        requestInterceptors:
+          - com.herring.product.interceptor.TokenRelayRequestInterceptor
 
 rocketmq:
   name-server: 192.168.138.131:9876
@@ -62,8 +67,8 @@ seata:
 #security:
 #  oauth2:
 #    client:
-#      client-id: product-service
-#      client-secret: product-secret-8888
+#      client-id: app-client
+#      client-secret: client-secret-8888
 #      user-authorization-uri: http://localhost:10800/oauth/authorize
 #      access-token-uri: http://localhost:10800/oauth/token
 #    resource:
@@ -77,11 +82,12 @@ seata:
 security:
   oauth2:
     client:
-      client-id: product-service
-      client-secret: product-secret-8888
+      client-id: app-client
+      client-secret: client-secret-8888
       user-authorization-uri: http://localhost:10800/oauth/authorize
       access-token-uri: http://localhost:10800/oauth/token
     resource:
+      id: product-service
       jwt:
         key-uri: http://localhost:10800/oauth/token_key
         key-value: sign-8888
