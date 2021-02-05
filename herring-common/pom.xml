@@ -10,6 +10,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>herring-common</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>herring-redis</module>
+        <module>herring-mysql</module>
+        <module>herring-tools</module>
+        <module>herring-feign</module>
+    </modules>
 
 
 </project>

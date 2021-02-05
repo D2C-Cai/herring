@@ -1,4 +1,4 @@
-package com.herring.member.interceptor;
+package com.herring.feign.interceptor;
 
 /*
 @(#)herring   2021-02-04
@@ -17,7 +17,7 @@ Website：http://www.hupun.com
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
-import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -35,7 +35,7 @@ public class TokenRelayRequestInterceptor implements RequestInterceptor {
         // 获取该次请求得token 将token传递
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String token = request.getHeader(AUTH_TOKEN);
-        if (StringUtils.isNotBlank(token)) {
+        if (!StringUtils.isEmpty(token)) {
             template.header(AUTH_TOKEN, token);
         }
     }

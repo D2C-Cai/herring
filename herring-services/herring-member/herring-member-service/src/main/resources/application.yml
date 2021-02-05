@@ -35,7 +35,7 @@ feign:
     config:
       default:
         requestInterceptors:
-          - com.herring.member.interceptor.TokenRelayRequestInterceptor
+          - com.herring.feign.interceptor.TokenRelayRequestInterceptor
 
 rocketmq:
   name-server: 192.168.138.131:9876
