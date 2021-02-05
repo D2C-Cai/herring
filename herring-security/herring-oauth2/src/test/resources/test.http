@@ -1,44 +1,7 @@
-# 1.redis-token
+# jwt-token
 
 #### /oauth/token?grant_type=password
-POST http://localhost:10800/oauth/token?grant_type=password&username=admin&password=123456&client_id=app-client&client_secret=client-secret-8888&scope=all
-Accept: */*
-Cache-Control: no-cache
-
-#{
-#  "access_token": "c794a4e9-b652-4f13-b409-1c72ffe8a1b2",
-#  "token_type": "bearer",
-#  "refresh_token": "0600ac08-b3ca-42e8-89d6-a2355af8c252",
-#  "expires_in": 3599,
-#  "scope": "all"
-#}
-
-#### /oauth/token?grant_type=refresh_token
-POST http://localhost:10800/oauth/token?grant_type=refresh_token&refresh_token=0600ac08-b3ca-42e8-89d6-a2355af8c252&client_id=app-client&client_secret=client-secret-8888
-Accept: */*
-Cache-Control: no-cache
-
-#{
-#  "access_token": "790db92e-db75-4c77-add4-bac0f1f0f1b7",
-#  "token_type": "bearer",
-#  "refresh_token": "0600ac08-b3ca-42e8-89d6-a2355af8c252",
-#  "expires_in": 3599,
-#  "scope": "all"
-#}
-
-#### /api/member/info
-GET http://localhost:10801/api/member/info
-Accept: */*
-Cache-Control: no-cache
-Authorization: bearer 790db92e-db75-4c77-add4-bac0f1f0f1b7
-
-# 790db92e-db75-4c77-add4-bac0f1f0f1b7
-
-
-# 2.jwt-token
-
-#### /oauth/token?grant_type=password
-POST http://localhost:10800/oauth/token?grant_type=password&username=admin&password=123456&client_id=app-client&client_secret=client-secret-8888&scope=all
+POST http://localhost:8080/oauth2-service/oauth/token?grant_type=password&username=admin&password=123456&client_id=app-client&client_secret=client-secret-8888&scope=all
 Accept: */*
 Cache-Control: no-cache
 
@@ -52,7 +15,7 @@ Cache-Control: no-cache
 #}
 
 #### /oauth/token?grant_type=refresh_token
-POST http://localhost:10800/oauth/token?grant_type=refresh_token&refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJhdGkiOiI1Zjg1ZTJiYy04OGFjLTQwYjEtODZkZC01MzNjYmE0YWQxMjciLCJleHAiOjE2MTI0NDAxMDcsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwianRpIjoiYTYwY2Q0ZDktOWZhNy00ZTNkLTk2ZDItMWQ4NTViZDEwYzRiIiwiY2xpZW50X2lkIjoibWVtYmVyLXNlcnZpY2UifQ.CjyTZK5g4-D9p-usUNB4HrRRIR2FLc74JI4pkzOIDx8&client_id=app-client&client_secret=client-secret-8888
+POST http://localhost:8080/oauth2-service/oauth/token?grant_type=refresh_token&refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJhdGkiOiI1Zjg1ZTJiYy04OGFjLTQwYjEtODZkZC01MzNjYmE0YWQxMjciLCJleHAiOjE2MTI0NDAxMDcsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwianRpIjoiYTYwY2Q0ZDktOWZhNy00ZTNkLTk2ZDItMWQ4NTViZDEwYzRiIiwiY2xpZW50X2lkIjoibWVtYmVyLXNlcnZpY2UifQ.CjyTZK5g4-D9p-usUNB4HrRRIR2FLc74JI4pkzOIDx8&client_id=app-client&client_secret=client-secret-8888
 Accept: */*
 Cache-Control: no-cache
 
@@ -65,19 +28,11 @@ Cache-Control: no-cache
 #  "jti": "0c615f51-27c5-451e-8b0a-5861cff87bac"
 #}
 
-#### /api/member/info
-GET http://localhost:10801/api/member/info
+#### /info/jwt
+GET http://localhost:8080/info/jwt
 Accept: */*
 Cache-Control: no-cache
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTI0MDc4NjIsInVzZXJfbmFtZSI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiIwYzYxNWY1MS0yN2M1LTQ1MWUtOGIwYS01ODYxY2ZmODdiYWMiLCJjbGllbnRfaWQiOiJtZW1iZXItc2VydmljZSIsInNjb3BlIjpbImFsbCJdfQ.ikbbD9smKIKutQLW7AvO8QSZhOyUo9YmUll4FQafbRU
-
-#eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTI0MDc4NjIsInVzZXJfbmFtZSI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiIwYzYxNWY1MS0yN2M1LTQ1MWUtOGIwYS01ODYxY2ZmODdiYWMiLCJjbGllbnRfaWQiOiJtZW1iZXItc2VydmljZSIsInNjb3BlIjpbImFsbCJdfQ.ikbbD9smKIKutQLW7AvO8QSZhOyUo9YmUll4FQafbRU
-
-#### /api/member/info/jwt
-GET http://localhost:10801/api/member/info/jwt
-Accept: */*
-Cache-Control: no-cache
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsImp3dC1leHQiOiJKV1Qg5omp5bGV5L-h5oGvIiwic2NvcGUiOlsiYWxsIl0sImV4cCI6MTYxMjQyMDY4MCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiI2OWEwNDM4Mi02MTQwLTQ2ZDUtYjVjMi1hNzhlYTBmZGU1ZmIiLCJjbGllbnRfaWQiOiJtZW1iZXItc2VydmljZSJ9._yeKnmNsKbsDuwJ7ccXSftWOtYwOPwEux-jaZ9_3tnU
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiZ2F0ZXdheS1zZXJ2aWNlIl0sInVzZXJfbmFtZSI6ImFkbWluIiwiand0LWV4dCI6IkpXVCDmianlsZXkv6Hmga8iLCJzY29wZSI6WyJhbGwiXSwiZXhwIjoxNjEyNTE1MzYwLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6ImEyZTQzYmVkLTRkODAtNDBlMy05YTdhLTUwNGI1YjRiZTNhOCIsImNsaWVudF9pZCI6ImFwcC1jbGllbnQifQ.F3wsokmF5TAmPheuyk6bPdVFp6jvmGBFVEJtI0mQtGg
 
 #{
 #  "user_name": "admin",
@@ -95,7 +50,7 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZ
 
 ####
 
-GET http://localhost:10801/api/member/hello
+GET http://localhost:8080/member-service/api/member/hello
 Accept: */*
 Cache-Control: no-cache
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsib3JkZXJzLXNlcnZpY2UiLCJtZW1iZXItc2VydmljZSIsInByb2R1Y3Qtc2VydmljZSJdLCJ1c2VyX25hbWUiOiJhZG1pbiIsImp3dC1leHQiOiJKV1Qg5omp5bGV5L-h5oGvIiwic2NvcGUiOlsiYWxsIl0sImV4cCI6MTYxMjQ5OTcyNSwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiI0MmFhZTI3Mi1kNDkwLTQ4OGEtOTkzMi0xNGFjMTFhM2Y1MzMiLCJjbGllbnRfaWQiOiJhcHAtY2xpZW50In0.Srxee2ptf4jHago_AbG9NdfjNYM0TwQF4DEslPElkJ0
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiZ2F0ZXdheS1zZXJ2aWNlIl0sInVzZXJfbmFtZSI6ImFkbWluIiwiand0LWV4dCI6IkpXVCDmianlsZXkv6Hmga8iLCJzY29wZSI6WyJhbGwiXSwiZXhwIjoxNjEyNTE1MzYwLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6ImEyZTQzYmVkLTRkODAtNDBlMy05YTdhLTUwNGI1YjRiZTNhOCIsImNsaWVudF9pZCI6ImFwcC1jbGllbnQifQ.F3wsokmF5TAmPheuyk6bPdVFp6jvmGBFVEJtI0mQtGg

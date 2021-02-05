@@ -1,0 +1,48 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-service
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.138.131:8848
+
+    sentinel:
+      eager: true
+      transport:
+        port: 8719
+        dashboard: 192.168.138.131:8858
+
+zuul:
+  sensitive-headers: Cookie,Set-Cookie
+  routes:
+    oauth2-routing:
+      path: /oauth2-service/**
+      serviceId: oauth2-service
+    member-routing:
+      path: /member-service/**
+      serviceId: member-service
+    orders-routing:
+      path: /orders-service/**
+      serviceId: orders-service
+    product-routing:
+      path: /product-service/**
+      serviceId: product-service
+  host:
+    connect-timeout-millis: 15000
+    socket-timeout-millis: 60000
+
+security:
+  oauth2:
+    client:
+      client-id: app-client
+      client-secret: client-secret-8888
+      user-authorization-uri: http://localhost:10800/oauth/authorize
+      access-token-uri: http://localhost:10800/oauth/token
+    resource:
+      jwt:
+        key-uri: http://localhost:10800/oauth/token_key
+        key-value: sign-8888

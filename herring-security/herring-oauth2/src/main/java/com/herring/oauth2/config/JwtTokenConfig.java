@@ -1,7 +1,7 @@
-package com.herring.orders.oauth2.jwt;
+package com.herring.oauth2.config;
 
 /*
-@(#)herring   2021-02-03
+@(#)herring   2021-02-04
  
 Copyright (c) 2011-2021 杭州湖畔网络技术有限公司 
 保留所有权利 
@@ -17,26 +17,15 @@ Website：http://www.hupun.com
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
-import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
-import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
-import javax.annotation.Resource;
-
 /**
- * @author: Jackey 2021/2/3
+ * @author: Jackey 2021/2/4
  */
 @Configuration
-@EnableResourceServer
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-public class JwtResourceServerConfig extends ResourceServerConfigurerAdapter {
-
-    @Resource
-    private TokenStore jwtTokenStore;
+public class JwtTokenConfig {
 
     @Bean
     public TokenStore jwtTokenStore() {
@@ -47,14 +36,7 @@ public class JwtResourceServerConfig extends ResourceServerConfigurerAdapter {
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
         JwtAccessTokenConverter accessTokenConverter = new JwtAccessTokenConverter();
         accessTokenConverter.setSigningKey("sign-8888");
-        accessTokenConverter.setVerifierKey("sign-8888");
         return accessTokenConverter;
-    }
-
-    @Override
-    public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-        resources.tokenStore(jwtTokenStore);
-        resources.resourceId("orders-service");
     }
 
 }

@@ -13,8 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-while getopts ":h:p:g:t:u:w:" opt
-do
+while getopts ":h:p:g:t:u:w:" opt; do
   case $opt in
   h)
     host=$OPTARG
@@ -42,8 +41,7 @@ do
 done
 
 urlencode() {
-  for ((i=0; i < ${#1}; i++))
-  do
+  for ((i = 0; i < ${#1}; i++)); do
     char="${1:$i:1}"
     case $char in
     [a-zA-Z0-9.~_-]) printf $char ;;
@@ -53,22 +51,22 @@ urlencode() {
 }
 
 if [[ -z ${host} ]]; then
-    host=localhost
+  host=localhost
 fi
 if [[ -z ${port} ]]; then
-    port=8848
+  port=8848
 fi
 if [[ -z ${group} ]]; then
-    group="SEATA_GROUP"
+  group="SEATA_GROUP"
 fi
 if [[ -z ${tenant} ]]; then
-    tenant=""
+  tenant=""
 fi
 if [[ -z ${username} ]]; then
-    username=""
+  username=""
 fi
 if [[ -z ${password} ]]; then
-    password=""
+  password=""
 fi
 
 nacosAddr=$host:$port
@@ -89,15 +87,15 @@ function addConfig() {
     echo "Set $1=$2 successfully "
   else
     echo "Set $1=$2 failure "
-    (( failCount++ ))
+    ((failCount++))
   fi
 }
 
 count=0
 for line in $(cat $(dirname "$PWD")/config.txt | sed s/[[:space:]]//g); do
-  (( count++ ))
+  ((count++))
   key=${line%%=*}
-    value=${line#*=}
+  value=${line#*=}
   addConfig "${key}" "${value}"
 done
 

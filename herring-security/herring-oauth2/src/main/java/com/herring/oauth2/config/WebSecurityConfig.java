@@ -41,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     * 允许匿名访问所有接口 主要是 oauth 接口
+     * 允许匿名访问所有接口 主要是 oauth2 接口
      *
      * @param http
      * @throws Exception

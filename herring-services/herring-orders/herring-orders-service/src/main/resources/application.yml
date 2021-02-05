@@ -7,18 +7,6 @@ spring:
   application:
     name: orders-service
 
-  redis:
-    database: 0
-    port: 6379
-    host: 192.168.138.131
-    lettuce:
-      pool:
-        max-active: 8
-        max-idle: 8
-        min-idle: 2
-        max-wait: 1ms
-      shutdown-timeout: 100ms
-
   cloud:
     nacos:
       discovery:
@@ -63,29 +51,3 @@ seata:
       group: SEATA_GROUP
       username: nacos
       password: nacos
-
-# 1.redis-token
-
-#security:
-#  oauth2:
-#    client:
-#      client-id: app-client
-#      client-secret: client-secret-8888
-#      user-authorization-uri: http://localhost:10800/oauth/authorize
-#      access-token-uri: http://localhost:10800/oauth/token
-#    authorization:
-#      check-token-access: http://localhost:10800/oauth/check_token
-
-# 2.jwt-token
-
-security:
-  oauth2:
-    client:
-      client-id: app-client
-      client-secret: client-secret-8888
-      user-authorization-uri: http://localhost:10800/oauth/authorize
-      access-token-uri: http://localhost:10800/oauth/token
-    resource:
-      jwt:
-        key-uri: http://localhost:10800/oauth/token_key
-        key-value: sign-8888

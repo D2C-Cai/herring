@@ -1,7 +1,7 @@
-package com.herring.oauth2.config.jwt;
+package com.herring.gateway.oauth2;
 
 /*
-@(#)herring   2021-02-04
+@(#)herring   2021-02-03
  
 Copyright (c) 2011-2021 杭州湖畔网络技术有限公司 
 保留所有权利 
@@ -17,15 +17,27 @@ Website：http://www.hupun.com
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
+import javax.annotation.Resource;
+
 /**
- * @author: Jackey 2021/2/4
+ * @author: Jackey 2021/2/3
  */
 @Configuration
-public class JwtTokenConfig {
+@EnableResourceServer
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class JwtResourceServerConfig extends ResourceServerConfigurerAdapter {
+
+    @Resource
+    private TokenStore jwtTokenStore;
 
     @Bean
     public TokenStore jwtTokenStore() {
@@ -36,7 +48,20 @@ public class JwtTokenConfig {
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
         JwtAccessTokenConverter accessTokenConverter = new JwtAccessTokenConverter();
         accessTokenConverter.setSigningKey("sign-8888");
+        accessTokenConverter.setVerifierKey("sign-8888");
         return accessTokenConverter;
+    }
+
+    @Override
+    public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
+        resources.tokenStore(jwtTokenStore);
+        resources.resourceId("gateway-service");
+    }
+
+    @Override
+    public void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .antMatchers("/oauth/**").permitAll();
     }
 
 }
