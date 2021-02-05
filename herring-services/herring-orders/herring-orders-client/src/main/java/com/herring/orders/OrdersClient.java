@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 /**
  * @author: Jackey 2021/1/22
  */
-@FeignClient(name = "orders-service", path = "/orders")
+@FeignClient(name = "orders-service", path = ContextPath.context_path)
 public interface OrdersClient {
 
     @RequestMapping("/service")

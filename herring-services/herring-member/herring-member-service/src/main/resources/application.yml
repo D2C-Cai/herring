@@ -1,5 +1,7 @@
 server:
   port: 10801
+  servlet:
+    context-path: /api/member
 
 spring:
   application:

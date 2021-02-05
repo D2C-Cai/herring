@@ -34,7 +34,7 @@ import java.nio.charset.StandardCharsets;
  * @author: Jackey 2020/12/22
  */
 @RestController
-@RequestMapping("/orders")
+@RequestMapping
 public class HelloController {
 
     @Resource
@@ -46,7 +46,6 @@ public class HelloController {
     @Resource
     private MessageProducer messageProducer;
 
-    @Trace(operationName = "orders.hello()")
     @RequestMapping("/hello")
     public String hello() {
         String product = productClient.service();

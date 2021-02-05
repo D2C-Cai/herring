@@ -29,7 +29,7 @@ spring:
       shutdown-timeout: 100ms
 
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://192.168.138.131:3306/herring_oauth2?characterEncoding=UTF-8&useSSL=false
     username: root
     password: 88021120

@@ -19,7 +19,6 @@ import com.herring.orders.OrdersClient;
 import com.herring.product.ProductClient;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import org.apache.skywalking.apm.toolkit.trace.Trace;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
@@ -34,7 +33,7 @@ import java.nio.charset.StandardCharsets;
  * @author: Jackey 2020/12/22
  */
 @RestController
-@RequestMapping("/member")
+@RequestMapping
 public class HelloController {
 
     @Resource
@@ -46,7 +45,6 @@ public class HelloController {
     @Resource
     private MessageProducer messageProducer;
 
-    @Trace(operationName = "member.hello()")
     @RequestMapping("/hello")
     public String hello() {
         String product = productClient.service();
