@@ -17,7 +17,7 @@ spring:
         dashboard: 192.168.138.131:8858
 
 zuul:
-  sensitive-headers: Cookie,Set-Cookie
+  sensitive-headers:
   routes:
     oauth2-routing:
       path: /oauth2-service/**
@@ -31,9 +31,11 @@ zuul:
     product-routing:
       path: /product-service/**
       serviceId: product-service
-  host:
-    connect-timeout-millis: 15000
-    socket-timeout-millis: 60000
+
+ribbon:
+  eager-load:
+    enabled: true
+    clients: oauth2-service,member-service,orders-service,product-service
 
 security:
   oauth2:
