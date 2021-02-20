@@ -23,11 +23,6 @@ spring:
     url: jdbc:mysql://192.168.138.131:3306/herring_data?characterEncoding=UTF-8&useSSL=false
     username: root
     password: 88021120
-    hikari:
-      connection-timeout: 30000
-      idle-timeout: 600000
-      max-lifetime: 1800000
-      maximum-pool-size: 9
 
 mybatis:
   mapper-locations: classpath:/mapper/*.xml
@@ -35,11 +30,15 @@ mybatis:
 feign:
   sentinel:
     enabled: true
+  hystrix:
+    enabled: false
   client:
     config:
       default:
         requestInterceptors:
           - com.herring.feign.interceptor.TokenRelayRequestInterceptor
+        readTimeout: 60000
+        connectTimeout: 60000
 
 rocketmq:
   name-server: 192.168.138.131:9876

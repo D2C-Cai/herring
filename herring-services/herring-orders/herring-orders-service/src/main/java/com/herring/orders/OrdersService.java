@@ -39,7 +39,8 @@ public class OrdersService {
     }
 
     public int doUpdate() {
-        return ordersMapper.update();
+        throw new RuntimeException("server error! ");
+        // return ordersMapper.update();
     }
 
 }

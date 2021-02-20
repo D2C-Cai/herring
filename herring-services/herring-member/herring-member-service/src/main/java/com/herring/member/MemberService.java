@@ -16,6 +16,9 @@ Website：http://www.hupun.com
 */
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.herring.orders.OrdersClient;
+import com.herring.product.ProductClient;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -28,6 +31,10 @@ public class MemberService {
 
     @Resource
     private MemberMapper memberMapper;
+    @Resource
+    private ProductClient productClient;
+    @Resource
+    private OrdersClient ordersClient;
 
     @SentinelResource(value = "sayHello", fallback = "sayHelloFail")
     public String sayHello() {
@@ -38,8 +45,12 @@ public class MemberService {
         return "I am sorry, Member! ";
     }
 
+    @GlobalTransactional(rollbackFor = Exception.class)
     public int doUpdate() {
-        return memberMapper.update();
+        int result = memberMapper.update();
+        ordersClient.update();
+        productClient.update();
+        return result;
     }
 
 }
