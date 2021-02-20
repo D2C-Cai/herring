@@ -1,4 +1,4 @@
-# Spring Cloud Alibaba 系列教程
+# Spring Cloud Alibaba 系列教程 (Java宇宙最详细）
 
 ![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fd2e763fae4440dabaed113a1c16da44~tplv-k3u1fbpfcp-watermark.image)
 
