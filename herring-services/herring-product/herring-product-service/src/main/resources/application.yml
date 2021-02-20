@@ -18,6 +18,20 @@ spring:
         port: 8719
         dashboard: 192.168.138.131:8858
 
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.138.131:3306/herring_data?characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 88021120
+    hikari:
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      maximum-pool-size: 9
+
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+
 feign:
   sentinel:
     enabled: true

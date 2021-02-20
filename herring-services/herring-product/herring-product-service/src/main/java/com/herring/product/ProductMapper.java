@@ -1,7 +1,7 @@
 package com.herring.product;
 
 /*
-@(#)herring   2021-01-22
+@(#)herring   2021-02-19
  
 Copyright (c) 2011-2021 杭州湖畔网络技术有限公司 
 保留所有权利 
@@ -15,19 +15,14 @@ accordance with the terms of the license agreement you entered into with HUPUN.
 Website：http://www.hupun.com
 */
 
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
- * @author: Jackey 2021/1/22
+ * @author: Jackey 2021/2/19
  */
-@FeignClient(name = "product-service", path = ContextPath.context_path)
-public interface ProductClient {
+@Mapper
+public interface ProductMapper {
 
-    @RequestMapping("/service")
-    String service();
-
-    @RequestMapping("/update")
-    String update();
+    int update();
 
 }

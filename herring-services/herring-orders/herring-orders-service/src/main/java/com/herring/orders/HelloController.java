@@ -50,6 +50,11 @@ public class HelloController {
         return ordersService.sayHello();
     }
 
+    @RequestMapping("/update")
+    public void update() {
+        ordersService.doUpdate();
+    }
+
     @RequestMapping("/message")
     public void message() throws Exception {
         messageProducer.run("");

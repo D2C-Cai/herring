@@ -18,11 +18,16 @@ Website：http://www.hupun.com
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 /**
  * @author: Jackey 2020/12/22
  */
 @Service
 public class MemberService {
+
+    @Resource
+    private MemberMapper memberMapper;
 
     @SentinelResource(value = "sayHello", fallback = "sayHelloFail")
     public String sayHello() {
@@ -31,6 +36,10 @@ public class MemberService {
 
     public String sayHelloFail() {
         return "I am sorry, Member! ";
+    }
+
+    public int doUpdate() {
+        return memberMapper.update();
     }
 
 }

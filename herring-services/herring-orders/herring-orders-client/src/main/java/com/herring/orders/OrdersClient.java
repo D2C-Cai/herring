@@ -27,4 +27,7 @@ public interface OrdersClient {
     @RequestMapping("/service")
     String service();
 
+    @RequestMapping("/update")
+    String update();
+
 }
