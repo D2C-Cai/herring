@@ -31,11 +31,23 @@ zuul:
     product-routing:
       path: /product-service/**
       serviceId: product-service
+    host:
+      socket-timeout-millis: 60000
+      connect-timeout-millis: 60000
 
 ribbon:
   eager-load:
     enabled: true
-    clients: oauth2-service,member-service,orders-service,product-service
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
 
 security:
   oauth2:
