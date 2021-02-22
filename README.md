@@ -11,6 +11,7 @@
 > [Spring Cloud Alibaba 实战（五）Zuul篇](https://juejin.cn/post/6930531222074425357)<br>
 > [Spring Cloud Alibaba 实战（六）RocketMQ篇](https://juejin.cn/post/6930869079217717256)<br>
 > [Spring Cloud Alibaba 实战（七）Seata篇](https://juejin.cn/post/6931274851894345735)<br>
+> [Spring Cloud Alibaba 实战（八）SkyWalking篇](https://juejin.cn/post/6931922457741770760)<br>
 
 > 项目 GitHub 地址：[https://github.com/D2C-Cai/herring](https://github.com/D2C-Cai/herring)<br>
 
